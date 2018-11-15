@@ -7,6 +7,7 @@ var designerWindow = document.getElementById('designer').contentWindow;
 //if the iframe is in a different domain
 //get the design id like this
 function getDesignId(callback) {
+  if( waiting ) throw "getDesignId() already in process."; 
   var waiting = true;
   designerWindow.postMessage('GET_DESIGN_ID',"*");
   function handleResponse(event){
