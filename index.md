@@ -1,3 +1,4 @@
-# Example Product Page
+[Example product page](./wh-product.html)
 
-[Product Page](./wh-product.html)
+[Source Code](https://github.com/Stahls/wh-example)
+
