@@ -8,7 +8,7 @@ var designerWindow = document.getElementById('designer').contentWindow;
 //get the design id like this
 function getDesignId(callback) {
   var waiting = true;
-  designerWindow.postMessage('GET_DESIGN_ID');
+  designerWindow.postMessage('GET_DESIGN_ID',"*");
   function handleResponse(event){
     if(waiting){
       waiting = false;
