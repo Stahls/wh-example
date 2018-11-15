@@ -5,7 +5,7 @@ var buttonText = button.textContent;
 var designerWindow = document.getElementById('designer').contentWindow;
 
 //if the iframe is in a different domain
-//get the iframe like this
+//get the design id like this
 function getDesignId(callback) {
   var waiting = true;
   designerWindow.postMessage('GET_DESIGN_ID');
@@ -13,9 +13,9 @@ function getDesignId(callback) {
     if(waiting){
       waiting = false;
       if(event != undefined && event.data != undefined)
-        callback(false, event.data);
+        callback(event.data, false);
       else
-        callback(true, null);
+        callback(null, true);
     }
   }
   setTimeout(handleResponse, 2000)
@@ -24,8 +24,8 @@ function getDesignId(callback) {
 
 //if the iframe is in the same domain
 //get the design id like this
-function getDesignId2(){
-  
+function getDesignId2(callback){
+  designerWindow.getDesignId(callback);
 }
 
 //intercept the normal add to cart form post
@@ -33,7 +33,7 @@ function getDesignId2(){
 form.addEventListener('submit', function (event) {
   event.preventDefault();
   button.textContent = "Wait...";
-  getDesignId(function(error, designId){
+  getDesignId(function(designId, error){
     button.textContent = buttonText;
     if(error){
       alert('ERROR');
