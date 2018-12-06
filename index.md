@@ -1,4 +1,7 @@
-[Example product page](./wh-product-2.html)
+
+[Teams Example](./wh-teams.html)
+
+[Template Example](./wh-templates.html)
 
 [Source Code](https://github.com/Stahls/wh-example)
 
