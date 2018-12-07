@@ -6,6 +6,6 @@ window.addEventListener('message', function(event){
   if( message ){
     console.log(message.data.cxDocumentId)
     formDesignId.value = message.data.cxDocumentId
-    //form.submit();
+    form.submit();
   }
 });
