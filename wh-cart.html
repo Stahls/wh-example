@@ -7,15 +7,52 @@
 
 <body style="text-align: center">
   <h3 id="cart">Cart</h3>
+  <div id="price">Fetching price...</div>
   <div id="downloadLink"></div>
+  <div>
+    Output option: 
+    <select id="selectoutput" onchange="updatelink()">
+      <option value="singlepagepdf">PDF</option>
+      <option value="singlepagesvg">SVG</option>
+    </select>
+    </div>
   <script>
+    function updatelink() {
+      var downloadLink = document.getElementById('downloadLink');
+      var url = new URL(window.location.href);
+      var selectedoutput = document.getElementById("selectoutput");
+      var jobmode = selectedoutput.options[selectedoutput.selectedIndex].value;
+      var downloadurl = `https://cadworx-master-edge.azurewebsites.net/Core2/Doc/ExportWHCxJob?{"config":"${url.searchParams.get("config")}","model":{"id":"${url.searchParams.get("designId")}","jobmode":"${jobmode}"}}`;
+      var link = document.createElement("a");
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.href = downloadurl;
+      link.innerHTML = downloadurl;
+      downloadLink.innerHTML = "";
+      downloadLink.appendChild(link);
+    }
     //TODO: Show how the pricing API works
-    //TODO: Show how download production file works
-    var cart = document.getElementById('cart');
-    var downloadLink = document.getElementById('downloadLink');
+    async function fetchprice() {
+      try {
+        var url = new URL(window.location.href);
+        var priceurl = `https://wh-cme-api.azurewebsites.net/pricing?config=${url.searchParams.get("config")}&jobid=${url.searchParams.get("designId")}`;
+        var response = await fetch(priceurl);
+        if(response.status < 200 || response.status > 399) throw new Error("Problem fetching price");
+        var respjson = await response.json();
+        var price = document.getElementById('price');
+        price.innerHTML = `Unit price: ${respjson.unitPrice}; quantity: ${respjson.quantity}; total price: ${respjson.unitPrice * respjson.quantity}`;
+      }
+      catch(error) {
+        if(typeof error == "Error") alert(error.Message);
+        else alert("Problem fetching price");
+      }
+
+    }
     var url = new URL(window.location.href);
+    var cart = document.getElementById('cart');
     cart.innerHTML = url.searchParams.get("sku") + ' was added to cart';
-    downloadLink.innerHTML = 'http://server.com/download?id=' + url.searchParams.get("designId");
+    updatelink();
+    fetchprice();
   </script>
 </body>
 
