@@ -9,6 +9,7 @@
   <h3 id="cart">Cart</h3>
   <div id="price">Fetching price...</div>
   <div id="downloadLink"></div>
+  <div id="jobData"></div>
   <div>
     Output option: 
     <select id="selectoutput" onchange="updatelink()">
@@ -22,16 +23,31 @@
       var url = new URL(window.location.href);
       var selectedoutput = document.getElementById("selectoutput");
       var jobmode = selectedoutput.options[selectedoutput.selectedIndex].value;
-      var downloadurl = `https://cadworx-master-edge.azurewebsites.net/Core2/Doc/ExportWHCxJob?{"config":"${url.searchParams.get("config")}","model":{"id":"${url.searchParams.get("designId")}","jobmode":"${jobmode}"}}`;
+      var downloadurl = `https://cxcore-cme.azurewebsites.net/Core2/Doc/ExportWHCxJob?{"config":"${url.searchParams.get("config")}","model":{"id":"${url.searchParams.get("designId")}","jobmode":"${jobmode}"}}`;
       var link = document.createElement("a");
       link.target = "_blank";
       link.rel = "noopener noreferrer";
       link.href = downloadurl;
       link.innerHTML = downloadurl;
       downloadLink.innerHTML = "";
+      downloadLink.appendChild(document.createTextNode("Download job result here: "));
       downloadLink.appendChild(link);
     }
-    //TODO: Show how the pricing API works
+
+    function updatejobdata() {
+      var downloadLink = document.getElementById('jobData');
+      var url = new URL(window.location.href);
+      var downloadurl = `https://cxcore-cme.azurewebsites.net/Core2/Json/Read?{"config":"${url.searchParams.get("config")}","model":{"id":"${url.searchParams.get("designId")}"}}`;
+      var link = document.createElement("a");
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.href = downloadurl;
+      link.innerHTML = downloadurl;
+      downloadLink.innerHTML = "";
+      downloadLink.appendChild(document.createTextNode("Get job data here: "));
+      downloadLink.appendChild(link);
+    }
+
     async function fetchprice() {
       try {
         var url = new URL(window.location.href);
@@ -52,6 +68,7 @@
     var cart = document.getElementById('cart');
     cart.innerHTML = url.searchParams.get("sku") + ' was added to cart';
     updatelink();
+    updatejobdata();
     fetchprice();
   </script>
 </body>
