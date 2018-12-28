@@ -51,7 +51,7 @@
     async function fetchprice() {
       try {
         var url = new URL(window.location.href);
-        var priceurl = `https://wh-cme-api.azurewebsites.net/pricing?config=${url.searchParams.get("config")}&jobid=${url.searchParams.get("designId")}`;
+        var priceurl = `https://wh-cme-api-staging.azurewebsites.net/pricing?config=${url.searchParams.get("config")}&jobid=${url.searchParams.get("designId")}`;
         var response = await fetch(priceurl);
         if(response.status < 200 || response.status > 399) throw new Error("Problem fetching price");
         var respjson = await response.json();
