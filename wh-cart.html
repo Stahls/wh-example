@@ -14,7 +14,6 @@
     Output option: 
     <select id="selectoutput" onchange="updatelink()">
       <option value="singlepagepdf">PDF</option>
-      <option value="singlepagesvg">SVG</option>
     </select>
     </div>
   <script>
@@ -23,7 +22,7 @@
       var url = new URL(window.location.href);
       var selectedoutput = document.getElementById("selectoutput");
       var jobmode = selectedoutput.options[selectedoutput.selectedIndex].value;
-      var downloadurl = `https://cxcore-cme.azurewebsites.net/Core2/Doc/ExportWHCxJob?{"config":"${url.searchParams.get("config")}","model":{"id":"${url.searchParams.get("designId")}","jobmode":"${jobmode}"}}`;
+      var downloadurl = `https://cadworx-dev-edge.azurewebsites.net/Core2/Doc/ExportWHCxJob?{"config":"${url.searchParams.get("config")}","model":{"id":"${url.searchParams.get("designId")}","jobmode":"${jobmode}"}}`;
       var link = document.createElement("a");
       link.target = "_blank";
       link.rel = "noopener noreferrer";
@@ -37,7 +36,7 @@
     function updatejobdata() {
       var downloadLink = document.getElementById('jobData');
       var url = new URL(window.location.href);
-      var downloadurl = `https://cxcore-cme.azurewebsites.net/Core2/Json/Read?{"config":"${url.searchParams.get("config")}","model":{"id":"${url.searchParams.get("designId")}"}}`;
+      var downloadurl = `https://cadworx-dev-edge.azurewebsites.net/Core2/Json/Read?{"config":"${url.searchParams.get("config")}","model":{"id":"${url.searchParams.get("designId")}"}}`;
       var link = document.createElement("a");
       link.target = "_blank";
       link.rel = "noopener noreferrer";
