@@ -165,4 +165,28 @@ JSON object with job description
 
 ## EXTERNAL LOGIN ##
 
+### Description ###
+
+Maintains a user's map between CadWorX login system and any external login system by returning a GUID for a specific external login.
+
+This User GUID should be used in any call to any cadworx interface.
+
+Should be called server to server, implementend in a server side login process. A secure ID with admin credentials should be provided so this call can be authenticated.
+
+### EndPoint ###
+
+`User/ExternalLogin`
+
+### Method ###
+
+GET
+
+### Parameters ### 
+
+Namespace: "WellingtonHouse"
+UserID : Client system's user identifier.  Could be Guid, integer, string etc. 
+
+### Response ###
+
+CadWorX UserID, mapping internally client's UserID
 
