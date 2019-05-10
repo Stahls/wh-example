@@ -11,7 +11,7 @@
 
 Provides a list of configured materials, rendering colors and production applicability restrictions (e.g, cannotApply, unsupportedSizes, modes).
 
-EndPoint 
+### EndPoint ###
 
 `/materials`
 
@@ -69,7 +69,7 @@ JSON object:
 
 ### Description ###
 
-Pricing validation end point that should be implemented on the back end to verify that a given order's price is valid. This call should be done on the checkout process, server to server to waranty data's 
+Pricing validation end point that should be implemented on the back end to verify that a given order's price is valid. This call should be done on the checkout process, server to server to warranty data's 
 
 ### EndPoint ###
 
@@ -167,11 +167,11 @@ JSON object with job description
 
 ### Description ###
 
-Maintains a user's map between CadWorX login system and any external login system by returning a GUID for a specific external login.
+Maintains a user's map between CadWorX login system and any external login system by returning a GUID for a specific external/client login.
 
-This User GUID should be used in any call to any cadworx interface.
+This User GUID is later used to any cadworx interface.
 
-Should be called server to server, implementend in a server side login process. A secure ID with admin credentials should be provided so this call can be authenticated.
+Should be called server to server, implemented in a server side login process. A secure ID with admin credentials should be provided so this call can be authenticated.
 
 ### EndPoint ###
 
