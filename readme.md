@@ -99,7 +99,7 @@ GET
 
 ### Parameters ### 
 
-Note: this parameters shouldn't use other values than the given on the sample app
+Note: theser parameters shouldn't use other values than the given on the sample app as they will affect export's output.
 
 UserID: authenticates the request
 jobmode: singlepagepdf
