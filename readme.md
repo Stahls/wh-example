@@ -69,7 +69,7 @@ JSON object:
 
 ### Description ###
 
-Pricing validation end point that should be implemented on the back end to verify that a given order's price is valid. This call should be done on the checkout process, server to server to warranty data's 
+Pricing validation end point that should be implemented on the back end to verify that a given order's price is valid. This call should be done on the checkout process, server to server to prevent client side pricing hi-jacking.
 
 ### EndPoint ###
 
