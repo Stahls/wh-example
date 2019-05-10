@@ -5,7 +5,7 @@
 
 # API DOCUMENTATION #
 
-## Materials API ##
+## MATERIALS API ##
 
 ### Description ###
 
@@ -41,7 +41,7 @@ None
 }
 ```
 
-## Pricing API for Front End ##
+## PRICING API / FRONT END ##
 
 ### Description ###
 
@@ -65,7 +65,7 @@ JSON object:
 
 `{"unitPrice": [price] ,"quantity": [quantity], "jobData": [object] }`
 
-## Pricing API for Back End ##
+## PRICING API / BACK END ##
 
 ### Description ###
 
@@ -83,7 +83,7 @@ Pricing validation end point that should be implemented on the back end to verif
 
 `{"unitPrice": [price] ,"quantity": [quantity] }`
 
-## PDF Export ##
+## PDF EXPORT ##
 
 ### EndPoint ###
 
@@ -105,6 +105,64 @@ SinglePageMargin: 0.25
 
 Binary stream describing a PDF for a given export ID
 
-## External Login ##
+## JOB DATA OBJECT ##
+
+### EndPoint ###
+
+`/Json/Read`
+
+### Method ###
+
+GET
+
+### Parameters ### 
+
+Id: Containing job's ID
+
+### Response ###
+
+JSON object with job description
+
+## Job object JSON structure example ##
+
+```
+{  
+   "Json":
+   {
+    "cxVariableData":[  
+      {  
+         "cxProperties":{  
+            "name":"RIVERSIDE",
+            "number":"88"
+         },
+         "cxQuantity":1
+      }
+   ],
+   "cxJobType":"CMETeamsPlayerPerfect",
+   "cxDocumentId":"88d63fe4-0bfc-4151-a152-8e241d84d45f",
+   "cxQuantity":1,
+   "description":{  
+      "firstMaterial":"FLM",
+      "firstMaterialDescription":"Thermo-FILM",
+      "firstMaterialClass":"A",
+      "firstColor":"002",
+      "firstColorDescription":"Black",
+      "secondMaterial":"NO-COLOR",
+      "secondMaterialDescription":"None",
+      "secondMaterialClass":"",
+      "secondColorDescription":"",
+      "fontSize":"2|8",
+      "fontName":"Varsity",
+      "style":"straight",
+      "maxLength":"14",
+      "nameHeight":"2",
+      "numberHeight":"8",
+      "originalTemplate":"team-template",
+      "docName":"team-template"
+   }
+}
+```
+
+## EXTERNAL LOGIN ##
 
 
