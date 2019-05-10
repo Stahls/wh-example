@@ -85,6 +85,10 @@ Pricing validation end point that should be implemented on the back end to verif
 
 ## PDF EXPORT ##
 
+### Description ###
+
+Production PDF export
+
 ### EndPoint ###
 
 `/Doc/ExportWHCxJob`
