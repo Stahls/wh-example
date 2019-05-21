@@ -194,3 +194,47 @@ UserID : Client system's user identifier.  Could be Guid, integer, string etc.
 
 CadWorX UserID, mapping internally client's UserID
 
+### Sample request ###
+
+URL
+
+```
+http://cadworx-dev-edge.azurewebsites.net/Core2/User/ExternalLogin
+```
+
+Request Payload
+
+```
+{
+   "config":"cmestage",
+   "model":{
+      "NameSpace":"Shopper",
+      "UserId":"H0JMX1U08CP48LTSWD9S038UTDFTEKF1-dev"
+   },
+   "log":{
+      "Environment":"local",
+      "ServerAccessToken":null
+   },
+   "ident":{
+      "SessionId":"1cd3cb35-6e3a-43ae-98de-94b3d9f8466c",
+      "SuperUser":false
+   }
+}
+```
+
+Response
+
+```
+{
+   "Model":{
+      "Namespace":"Shopper",
+      "UserId":"02cf1026-e7f5-4439-99b5-980ab19eed16",
+      "SessionId":"cddcca77-1d35-4bf4-b5be-3f3fe71bc945"
+   },
+   "Success":true,
+   "Error":null,
+   "Log":null
+}
+```
+
+Model.SessionId in the response is the value that you will use on your URL when embeding app's front end, which maps to Model.UserId from the response.
