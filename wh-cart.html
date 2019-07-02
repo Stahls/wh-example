@@ -22,7 +22,7 @@
       var url = new URL(window.location.href);
       var selectedoutput = document.getElementById("selectoutput");
       var jobmode = selectedoutput.options[selectedoutput.selectedIndex].value;
-      var downloadurl = `https://cxcore-wh.azurewebsites.net/Core2/Doc/ExportWHCxJob?{"config":"${url.searchParams.get("config")}","model":{"id":"${url.searchParams.get("designId")}","jobmode":"${jobmode}", "OutputFormat": "PDF", "SinglePageMargin": 0.25, "CenterAlignFigures": true, "IgnoreQuantity": false, "PreserveFigureBrush": false,"SeparateColors": true }}`;
+      var downloadurl = `https://cxcore-wh.azurewebsites.net/Core2/Doc/ExportWHCxJob?{"config":"${url.searchParams.get("config")}","model":{"id":"${url.searchParams.get("designId")}","jobmode":"${jobmode}", "OutputFormat": "PDF", "SinglePageMargin": 0.25, "CenterAlignFigures": "${url.searchParams.get("centeralign")}", "IgnoreQuantity": false, "PreserveFigureBrush": false,"SeparateColors": true }}`;
       var link = document.createElement("a");
       link.target = "_blank";
       link.rel = "noopener noreferrer";
